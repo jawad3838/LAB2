@@ -30,16 +30,23 @@ public class FactorialTest {
      * Test of factorial method, of class Factorial.
      */
     @Test
-    public void testFactorial() {
+    public void testFactorial_Positive() {
         
-        System.out.println("factorial");
-        int n = 5;
+        System.out.println("Factorial Test For Positive Numbers:");
         Factorial instance = new Factorial();
-        int expResult = 999;
-        int result = instance.factorial(n);
-        assertEquals(expResult, result);      //Test if the expected result and output are equal
+        
+        assertEquals(24, instance.factorial(4));      //Test if the expected result and output are equal
+        assertEquals(6, instance.factorial(3));
+        assertEquals(120, instance.factorial(5));
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-    
+        
+    @Test(expected = StackOverflowError.class)
+    public void testFactorial_Negative() 
+    {
+      Factorial instance = new Factorial();
+     
+      instance.factorial(-2);
+    }
 }
